@@ -1,9 +1,9 @@
 package cl.duoc.perfulandia.controller;
 
 import cl.duoc.perfulandia.dto.MessageResponse;
-import cl.duoc.perfulandia.repository.UsuarioRepositorio;
 import cl.duoc.perfulandia.service.UsuarioServicio;
 import cl.duoc.perfulandia.service.dominio.Usuario;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -40,7 +40,7 @@ public class UsuarioController {
                     .status(HttpStatus.CONFLICT)
                     .body(new MessageResponse("Error: Usuario ya existente."));
         }
-        return ResponseEntity.ok(new MessageResponse("Usuario creado con éxito."));
+        return ResponseEntity.status(HttpStatus.CREATED).body(new MessageResponse("Usuario creado."));
     }
 
     @PutMapping("/{id}")
