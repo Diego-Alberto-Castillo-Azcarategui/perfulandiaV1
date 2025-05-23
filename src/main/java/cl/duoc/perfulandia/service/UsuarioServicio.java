@@ -1,0 +1,47 @@
+package cl.duoc.perfulandia.service;
+
+
+import cl.duoc.perfulandia.repository.UsuarioRepositorio;
+import cl.duoc.perfulandia.service.dominio.Usuario;
+import org.springframework.stereotype.Service;
+//o
+import java.util.List;
+
+@Service
+public class UsuarioServicio {
+    public List<Usuario> getUsuario() {
+        return UsuarioRepositorio.findAll();
+    }
+
+    public Usuario getUsuario(String id) {
+        return UsuarioRepositorio.findByid(id);
+    }
+
+    public boolean agregarUsuario(Usuario usuario) {
+        String id = usuario.getId();
+        Usuario encontrado = UsuarioRepositorio.findByid(id);
+        if (encontrado != null) {
+            return false;
+        }
+        UsuarioRepositorio.agregarUsuario(usuario);
+        return true;
+    }
+
+    public boolean reemplazarUsuario(String id, Usuario request) {
+        Usuario encontrado = UsuarioRepositorio.findByid(id);
+        if (encontrado == null) {
+            return false;
+        }
+        UsuarioRepositorio.reemplazarUsuario(encontrado, request);
+        return true;
+    }
+
+    public boolean eliminarUsuario(String id) {
+        Usuario encontrado = UsuarioRepositorio.findByid(id);
+        if (encontrado == null) {
+            return false;
+        }
+        UsuarioRepositorio.eliminarUsuario(encontrado);
+        return true;
+    }
+}
