@@ -1,8 +1,9 @@
 package cl.duoc.perfulandia.controller;
 
 import cl.duoc.perfulandia.dto.MessageResponse;
-import cl.duoc.perfulandia.model.Usuario;
+import cl.duoc.perfulandia.repository.UsuarioRepositorio;
 import cl.duoc.perfulandia.service.UsuarioServicio;
+import cl.duoc.perfulandia.service.dominio.Usuario;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,7 +19,7 @@ public class UsuarioController {
 
     @GetMapping
     public ResponseEntity<List<Usuario>> obtenerUsuarios() {
-        return ResponseEntity.ok(usuarioServicio.obtenerUsuarios());
+        return ResponseEntity.ok(usuarioServicio.getUsuario());
     }
 
     @GetMapping("/{id}")
@@ -31,7 +32,8 @@ public class UsuarioController {
     }
 
     @PostMapping
-    public ResponseEntity<MessageResponse> crearUsuario(@RequestBody Usuario request) {
+    public ResponseEntity<MessageResponse> crearUsuario(
+            @RequestBody Usuario request) {
         boolean agregado = usuarioServicio.agregarUsuario(request);
         if (!agregado) {
             return ResponseEntity
@@ -42,8 +44,9 @@ public class UsuarioController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<MessageResponse> reemplazarUsuario(@PathVariable String id,
-                                                             @RequestBody Usuario request) {
+    public ResponseEntity<MessageResponse> reemplazarUsuario(
+            @PathVariable String id,
+            @RequestBody Usuario request) {
         boolean reemplazado = usuarioServicio.reemplazarUsuario(id, request);
         if (!reemplazado) {
             return ResponseEntity.notFound().build();
