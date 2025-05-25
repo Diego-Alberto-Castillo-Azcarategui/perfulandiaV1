@@ -1,7 +1,6 @@
 package cl.duoc.perfulandia.repository;
 
 import cl.duoc.perfulandia.service.dominio.Producto;
-import cl.duoc.perfulandia.service.dominio.Usuario;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 
@@ -67,7 +66,9 @@ public class ProductoRepositorio {
         return null;
     }
 
-    public static Producto agregarProducto(Producto producto) {productos.add(producto);}
+    public static void agregarProducto(Producto producto) {
+        productos.add(producto);
+    }
 
     public static void reemplazarProducto(Producto toReplace, Producto request) {
         int index = productos.indexOf(toReplace);
