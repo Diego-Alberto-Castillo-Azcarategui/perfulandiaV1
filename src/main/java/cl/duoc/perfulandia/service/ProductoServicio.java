@@ -13,15 +13,20 @@ public class ProductoServicio {
 
 
     public static boolean eliminarProducto(String id) {
-        return false;
+        Producto encontrado = ProductoRepositorio.findById(id);
+        if (encontrado == null) {
+            return false;
+        }
+        ProductoRepositorio.eliminarProducto(encontrado);
+        return true;
     }
 
     public List<Producto> getProducto() {
-        return ProductoRepositorio.finAll();
+        return ProductoRepositorio.findAll();
     }
 
     public Producto getProducto(String id) {
-        return null;
+        return ProductoRepositorio.findById(id);
     }
 
     public boolean agregarProducto(Producto producto) {

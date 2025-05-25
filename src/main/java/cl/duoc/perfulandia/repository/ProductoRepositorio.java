@@ -70,7 +70,7 @@ public class ProductoRepositorio {
         productos.add(producto);
     }
 
-    public static void reemplazarProducto(Producto toReplace, Producto request) {
+    public static void actualizarProducto(Producto toReplace, Producto request) {
         int index = productos.indexOf(toReplace);
         productos.set(index,request);
     }

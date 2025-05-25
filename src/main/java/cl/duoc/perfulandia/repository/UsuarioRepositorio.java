@@ -44,7 +44,7 @@ public class UsuarioRepositorio {
         usuarios.add(usuario);
     }
 
-    public static void reemplazarUsuario(Usuario toReplace, Usuario request) {
+    public static void actualizarUsuario(Usuario toReplace, Usuario request) {
         int index = usuarios.indexOf(toReplace);
         usuarios.set(index, request);
     }

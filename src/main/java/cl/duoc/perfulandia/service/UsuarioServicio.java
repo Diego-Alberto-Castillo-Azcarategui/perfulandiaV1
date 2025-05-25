@@ -32,7 +32,7 @@ public class UsuarioServicio {
         if (encontrado == null) {
             return false;
         }
-        UsuarioRepositorio.reemplazarUsuario(encontrado, request);
+        UsuarioRepositorio.actualizarUsuario(encontrado, request);
         return true;
     }
 
