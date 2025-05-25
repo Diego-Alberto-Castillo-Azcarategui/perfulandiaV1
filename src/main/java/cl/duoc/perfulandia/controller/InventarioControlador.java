@@ -15,13 +15,55 @@ import java.util.List;
 @RestController
 @RequestMapping("/Inventario")
 
-
 public class InventarioControlador {
+
     @Autowired
     private InventarioServicio inventarioServicio;
     @Autowired
     private UsuarioServicio usuarioServicio;
 
     @GetMapping
-    public ResponseEntity<Inventario> listarInventarios() {}
+    public ResponseEntity<List<Inventario>> listar() {
+        return ResponseEntity.ok(InventarioServicio.getInventario());
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<Inventario> buscarPorId(@PathVariable String id) {
+        Inventario encontrado = inventarioServicio.getInventario(id);
+        if (encontrado != null) {
+            return ResponseEntity.ok(encontrado);
+        }
+        return ResponseEntity.notFound().build();
+    }
+
+    @PostMapping
+    public ResponseEntity<MessageResponse> crearProducto(
+            @RequestBody Inventario request) {
+        boolean agregado = inventarioServicio.agregarInventario(request);
+        if (!agregado) {
+            return ResponseEntity.status(HttpStatus.CONFLICT)
+                    .body(new MessageResponse("Error al agregar Producto"));
+        }
+        return ResponseEntity.ok(new MessageResponse("Producto creado"));
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<MessageResponse> actualizarInventario(
+            @PathVariable String id,
+            @RequestBody Inventario request) {
+        boolean actualizado = inventarioServicio.actualizarInventario(id, request);
+        if (!actualizado) {
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(new MessageResponse("Producto modificado"));
+    }
+
+     @DeleteMapping("/{id}")
+    public ResponseEntity<MessageResponse> eliminarInventario(@PathVariable String id) {
+        boolean eliminado = inventarioServicio.eliminarInventario(id);
+        if (!eliminado) {
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(new MessageResponse("Producto creado"));
+     }
 }

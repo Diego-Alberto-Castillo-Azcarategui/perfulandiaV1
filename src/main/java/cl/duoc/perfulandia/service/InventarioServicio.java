@@ -10,7 +10,6 @@ import java.util.List;
 @Service
 public class InventarioServicio {
 
-
     public static boolean eliminarInventario(String id) {
         Inventario encontrado = InventarioRepositorio.findById(id);
         if (encontrado == null) {
@@ -20,9 +19,13 @@ public class InventarioServicio {
         return true;
     }
 
-    public List<Inventario> getInventario() {return InventarioRepositorio.findAll();}
+    public static List <Inventario> getInventario() {
+        return InventarioRepositorio.findAll();
+    }
 
-    public Inventario getInventario(String id) {return InventarioRepositorio.findById(id);}
+
+    public Inventario getInventario(String id) {
+        return InventarioRepositorio.findById(id);}
 
     public boolean agregarInventario(Inventario inventario) {
         String id = inventario.getId();

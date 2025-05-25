@@ -9,6 +9,7 @@ import java.util.List;
 
 @Service
 public class UsuarioServicio {
+
     public List<Usuario> getUsuario() {
         return UsuarioRepositorio.findAll();
     }
