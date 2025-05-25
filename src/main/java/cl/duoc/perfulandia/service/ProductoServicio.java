@@ -24,12 +24,22 @@ public class ProductoServicio {
         return null;
     }
 
-    public boolean agregarProducto(Producto request) {
-        return false;
+    public boolean agregarProducto(Producto producto) {
+        String id = producto.getId();
+        Producto encontrado = ProductoRepositorio.findById(id);
+        if (encontrado != null) {
+            return false;
+        }
+        ProductoRepositorio.agregarProducto(producto);
+            return true;
     }
 
-
     public boolean actualizarProducto(String id, Producto request) {
-        return false;
+        Producto encontrado = ProductoRepositorio.findById(id);
+        if (encontrado == null) {
+            return false;
+        }
+        ProductoRepositorio.actualizarProducto(encontrado,request);
+            return true;
     }
 }
