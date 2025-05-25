@@ -16,11 +16,39 @@ public class UsuarioRepositorio {
         usuarios.addAll(
                 List.of(
                         Usuario.builder()
-                                .nombre("Test1")
-                                .apellido("prueba")
-                                .email("usuarioprueba@test")
-                                .telefono("999999992")
+                                .nombre("Juan")
+                                .apellido("Perez")
+                                .email("juanperez@gmail.com")
+                                .telefono("999769992")
                                 .id("1")
+                                .build(),
+                        Usuario.builder()
+                                .nombre("Rodrigo")
+                                .apellido("Rojas")
+                                .email("r.rojas@gmail.com")
+                                .telefono("956434211")
+                                .id("2")
+                                .build(),
+                        Usuario.builder()
+                                .nombre("Brayan")
+                                .apellido("Maldonado")
+                                .email("mb1877@gmail.com")
+                                .telefono("998552313")
+                                .id("3")
+                                .build(),
+                        Usuario.builder()
+                                .nombre("Jorge")
+                                .apellido("Valdes")
+                                .email("j.valdes.j@gmail.com")
+                                .telefono("908671020")
+                                .id("4")
+                                .build(),
+                        Usuario.builder()
+                                .nombre("Ramiro")
+                                .apellido("Prato")
+                                .email("prato.ramiro@gmail.com")
+                                .telefono("912993461")
+                                .id("5")
                                 .build()
                 )
         );
