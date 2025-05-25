@@ -4,7 +4,6 @@ import cl.duoc.perfulandia.service.dominio.Inventario;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -60,7 +59,9 @@ public class InventarioRepositorio {
         );
     }
 
-    public static List<Inventario> findAll() {return inventarios;}
+    public static List<Inventario> findAll() {
+        return inventarios;
+    }
 
     public static Inventario findById(String id) {
         for (Inventario inventario : inventarios) {
@@ -72,20 +73,16 @@ public class InventarioRepositorio {
     }
 
     public static void agregarInventario(Inventario inventario) {
-        inventarios.add(inventario);}
+        inventarios.add(inventario);
     }
 
     public static void actualizarInventario(Inventario toReplace, Inventario request) {
         int index = inventarios.indexOf(toReplace);
-        inventarios.set(index,request);
+        inventarios.set(index, request);
+
     }
 
-    public static void eliminarInventario(Inventario encontrado) {inventarios.remove(encontrado);}
-
-    public static List<Inventario> finAll() {
-        return inventarios;
+    public static void eliminarInventario(Inventario encontrado) {
+        inventarios.remove(encontrado);
     }
 }
-
-
-
