@@ -13,6 +13,7 @@ public class ProductoServicio {
 
 
     public static boolean eliminarProducto(String id) {
+        return false;
     }
 
     public List<Producto> getProducto() {
@@ -23,6 +24,12 @@ public class ProductoServicio {
         return null;
     }
 
-    public boolean agregarProducto(String id, Producto request) {
+    public boolean agregarProducto(Producto request) {
+        return false;
+    }
+
+
+    public boolean actualizarProducto(String id, Producto request) {
+        return false;
     }
 }

@@ -36,7 +36,7 @@ public class ProductoControlador {
     @PostMapping
     public ResponseEntity<MessageResponse> crearProducto(
             @RequestBody Producto request){
-        boolean agregado = productoServicio.agregarProducto(id, request);
+        boolean agregado = productoServicio.agregarProducto(request);
         if (!agregado) {
             return ResponseEntity
                     .status(HttpStatus.CONFLICT)
@@ -50,7 +50,7 @@ public class ProductoControlador {
     public ResponseEntity<MessageResponse> actualizarProducto(
             @PathVariable String id,
             @RequestBody Producto request) {
-        boolean actualizado = productoServicio.agregarProducto(id, request);
+        boolean actualizado = productoServicio.actualizarProducto(id, request);
         if (!actualizado) {
             return ResponseEntity.notFound().build();
         }
