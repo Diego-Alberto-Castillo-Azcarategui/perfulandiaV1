@@ -44,6 +44,7 @@ public class ProductoControlador {
         }
         return ResponseEntity.status(HttpStatus.CREATED).body(new MessageResponse("Producto agregado"));
     }
+    //coment
 
     @PutMapping("/{id}")
     public ResponseEntity<MessageResponse> actualizarProducto(
