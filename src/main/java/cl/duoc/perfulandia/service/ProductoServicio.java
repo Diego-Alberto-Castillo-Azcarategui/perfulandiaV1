@@ -1,7 +1,6 @@
 package cl.duoc.perfulandia.service;
 
 import cl.duoc.perfulandia.repository.ProductoRepositorio;
-import cl.duoc.perfulandia.repository.UsuarioRepositorio;
 import cl.duoc.perfulandia.service.dominio.Producto;
 import org.springframework.stereotype.Service;
 
