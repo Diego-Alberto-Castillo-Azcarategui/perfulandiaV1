@@ -28,4 +28,7 @@ public class ProductoRepositorio {
     }
 
 
+    public static List<Producto> finAll() {
+        return productos;
+    }
 }
