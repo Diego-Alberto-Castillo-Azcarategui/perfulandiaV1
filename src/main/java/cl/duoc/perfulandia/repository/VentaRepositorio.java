@@ -28,7 +28,6 @@ public class VentaRepositorio {
 
     }
 
-    public static List<Venta> findAll() {return ventas;}
 
     public static Venta findById(String id) {
         for (Venta venta : ventas) {

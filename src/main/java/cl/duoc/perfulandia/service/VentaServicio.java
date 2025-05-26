@@ -19,7 +19,6 @@ public class VentaServicio {
         return true;
     }
 
-    public List<Venta> getVenta() {return VentaRepositorio.findAll(); }
 
     public boolean agregarVenta(Venta venta) {
         String id = venta.getId();
@@ -42,4 +41,11 @@ public class VentaServicio {
     }
 
 
+    public List<Venta> getVenta() {
+        return VentaRepositorio.findAll();
+    }
+
+    public Venta getVenta(String id) {
+        return VentaRepositorio.findById(id);
+    }
 }

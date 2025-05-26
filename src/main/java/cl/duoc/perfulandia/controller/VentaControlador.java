@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/Venta")
+@RequestMapping("/venta")
 
 
 public class VentaControlador {
@@ -35,9 +35,9 @@ public class VentaControlador {
 
     @PostMapping
     public ResponseEntity<MessageResponse> crearVenta (
-            @RequestBody Venta venta){
+            @RequestBody Venta request){
         boolean agregado = ventaServicio.agregarVenta(request);
-        if (agregado) {
+        if (!agregado) {
             return ResponseEntity
                     .status(HttpStatus.CONFLICT)
                     .body(new MessageResponse("Error: Venta no pudo concretarse"));
