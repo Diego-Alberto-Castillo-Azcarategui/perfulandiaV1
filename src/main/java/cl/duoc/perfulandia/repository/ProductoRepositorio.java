@@ -17,14 +17,14 @@ public class ProductoRepositorio {
         productos.addAll(
                 List.of(
                         Producto.builder()
-                                .id("POO1")
+                                .id("P001")
                                 .nombre("Perfume vainilla")
                                 .descripcion("Perfume con un delicioso olor a vainilla")
                                 .precio("30.000")
                                 .categoria("Perfumes")
                                 .build(),
                         Producto.builder()
-                                .id("POO2")
+                                .id("P002")
                                 .nombre("Perfume Ben 10")
                                 .descripcion("Perfume con olor a limon")
                                 .precio("10.000")

@@ -53,7 +53,9 @@ public class VentaControlador {
         if (!actualizado) {
             return ResponseEntity.notFound().build();
         }
-        return ResponseEntity.status(HttpStatus.OK).body(new MessageResponse("Información de la venta actualizada"));
+        return ResponseEntity
+                .status(HttpStatus.OK)
+                .body(new MessageResponse("Información de la venta actualizada"));
     }
 
     @DeleteMapping("/{id}")
