@@ -27,7 +27,7 @@ public class ProductoControlador {
     @GetMapping("/{id}")
     public ResponseEntity<Producto> buscarProductoPorId(@PathVariable String id) {
         Producto encontrado = productoServicio.getProducto(id);
-        if (encontrado == null) {
+        if (encontrado != null) {
             return ResponseEntity.ok(encontrado);
         }
         return ResponseEntity.noContent().build();

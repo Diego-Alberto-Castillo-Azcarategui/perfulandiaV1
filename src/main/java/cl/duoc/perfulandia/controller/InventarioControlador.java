@@ -44,7 +44,8 @@ public class InventarioControlador {
             return ResponseEntity.status(HttpStatus.CONFLICT)
                     .body(new MessageResponse("Error al agregar Producto"));
         }
-        return ResponseEntity.ok(new MessageResponse("Producto creado"));
+        return ResponseEntity.status(HttpStatus.CREATED)
+                .body(new MessageResponse("Producto creado."));
     }
 
     @PutMapping("/{id}")
@@ -55,7 +56,9 @@ public class InventarioControlador {
         if (!actualizado) {
             return ResponseEntity.notFound().build();
         }
-        return ResponseEntity.ok(new MessageResponse("Producto modificado"));
+        return ResponseEntity
+                .status(HttpStatus.OK)
+                .body(new MessageResponse("Producto modificado"));
     }
 
      @DeleteMapping("/{id}")
@@ -64,6 +67,6 @@ public class InventarioControlador {
         if (!eliminado) {
             return ResponseEntity.notFound().build();
         }
-        return ResponseEntity.ok(new MessageResponse("Producto creado"));
+        return ResponseEntity.ok(new MessageResponse("Producto eliminado"));
      }
 }
