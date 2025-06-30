@@ -64,5 +64,6 @@ public class UsuarioController {
         }
         return ResponseEntity.ok(new MessageResponse("Usuario eliminado con éxito."));
     }
+
 }
 
