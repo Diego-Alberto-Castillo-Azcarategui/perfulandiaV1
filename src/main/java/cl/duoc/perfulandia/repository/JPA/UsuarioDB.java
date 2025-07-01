@@ -9,21 +9,13 @@ import lombok.Setter;
 @Entity
 @Table(name = "usuarios")
 public class UsuarioDB {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", updatable = false, nullable = false)
-    private Integer id;
+    private Long id;
 
-    @Column(name = "nombre", nullable = false)
     private String nombre;
-
-    @Column(name = "apellido", nullable = false)
     private String apellido;
-
-    @Column(name = "email", nullable = false)
     private String email;
+    private String telefono;
 
-    @Column(name = "telefono", nullable = false)
-    private Integer telefono;
 }
