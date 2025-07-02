@@ -20,35 +20,35 @@ public class UsuarioRepositorio {
                                 .apellido("Perez")
                                 .email("juanperez@gmail.com")
                                 .telefono("999769992")
-                                .id("1")
+                                .id(Long.valueOf("1"))
                                 .build(),
                         Usuario.builder()
                                 .nombre("Rodrigo")
                                 .apellido("Rojas")
                                 .email("r.rojas@gmail.com")
                                 .telefono("956434211")
-                                .id("2")
+                                .id(Long.valueOf("2"))
                                 .build(),
                         Usuario.builder()
                                 .nombre("Brayan")
                                 .apellido("Maldonado")
                                 .email("mb1877@gmail.com")
                                 .telefono("998552313")
-                                .id("3")
+                                .id(Long.valueOf("3"))
                                 .build(),
                         Usuario.builder()
                                 .nombre("Jorge")
                                 .apellido("Valdes")
                                 .email("j.valdes.j@gmail.com")
                                 .telefono("908671020")
-                                .id("4")
+                                .id(Long.valueOf("4"))
                                 .build(),
                         Usuario.builder()
                                 .nombre("Ramiro")
                                 .apellido("Prato")
                                 .email("prato.ramiro@gmail.com")
                                 .telefono("912993461")
-                                .id("5")
+                                .id(Long.valueOf("5"))
                                 .build()
                 )
         );
@@ -59,7 +59,7 @@ public class UsuarioRepositorio {
         return usuarios;
     }
 
-    public static Usuario findByid(String id) {
+    public static Usuario findByid(Long id) {
         for (Usuario usuario : usuarios) {
             if (usuario.getId().equals(id)) {
                 return usuario;

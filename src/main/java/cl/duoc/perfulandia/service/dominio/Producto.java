@@ -1,6 +1,7 @@
 package cl.duoc.perfulandia.service.dominio;
 
 import cl.duoc.perfulandia.repository.ProductoRepositorio;
+import jakarta.persistence.*;
 import lombok.*;
 
 @Getter
@@ -9,10 +10,16 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 
+@Entity
+@Table(name = "productos")
 public class Producto {
-    private String id;
-    private String nombre;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
     private String descripcion;
-    private String precio;
+    private String nombre;
     private String categoria;
+    private Double precio;      // o BigDecimal
+    // …otros campos
 }

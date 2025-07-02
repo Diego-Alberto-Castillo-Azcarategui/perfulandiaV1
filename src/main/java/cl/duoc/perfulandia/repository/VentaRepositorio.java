@@ -3,51 +3,16 @@ package cl.duoc.perfulandia.repository;
 import cl.duoc.perfulandia.service.dominio.Venta;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
-
+import org.springframework.data.jpa.repository.JpaRepository;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
-@NoArgsConstructor(access = AccessLevel.PRIVATE)
-
-public class VentaRepositorio {
-    private static final List<Venta> ventas = new ArrayList<>();
-
-    static {
-        ventas.addAll(
-                List.of(
-                        Venta.builder()
-                        .id("V001")
-                        .fecha("2025-11-20")
-                        .clienteId("01")
-                        .productoId("P001")
-                        .cantidad("2")
-                        .total("60.000")
-                        .build()
-                )
-        );
-
-    }
 
 
-    public static Venta findById(String id) {
-        for (Venta venta : ventas) {
-            if (venta.getId().equals(id)) {
-                return venta;
-            }
-        }
-        return null;
-    }
+public interface VentaRepositorio extends JpaRepository<Venta, Long> {
 
-    public static void agregarVenta(Venta venta) {
-        ventas.add(venta);
-    }
+    List<Venta> findByFechaBetween(LocalDateTime desde, LocalDateTime hasta);
 
-    public static void actualizarVenta(Venta toReplace,Venta request) {
-        int index = ventas.indexOf(toReplace);
-        ventas.set(index, request);
-    }
-    public static void eliminarVenta(Venta encontrado) {ventas.remove(encontrado);}
-
-    public static List<Venta> findAll() {
-        return ventas;}
 }
+

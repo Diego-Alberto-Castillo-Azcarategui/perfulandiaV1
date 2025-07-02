@@ -25,7 +25,7 @@ public class ProductoControlador {
         return ResponseEntity.ok(productoServicio.getProducto());}
 
     @GetMapping("/{id}")
-    public ResponseEntity<Producto> buscarProductoPorId(@PathVariable String id) {
+    public ResponseEntity<Producto> buscarProductoPorId(@PathVariable Long id) {
         Producto encontrado = productoServicio.getProducto(id);
         if (encontrado != null) {
             return ResponseEntity.ok(encontrado);
@@ -47,7 +47,7 @@ public class ProductoControlador {
 
     @PutMapping("/{id}")
     public ResponseEntity<MessageResponse> actualizarProducto(
-            @PathVariable String id,
+            @PathVariable Long id,
             @RequestBody Producto request) {
         boolean actualizado = productoServicio.actualizarProducto(id, request);
         if (!actualizado) {
@@ -57,7 +57,7 @@ public class ProductoControlador {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<MessageResponse> eliminarProducto(@PathVariable String id) {
+    public ResponseEntity<MessageResponse> eliminarProducto(@PathVariable Long id) {
         boolean eliminado = ProductoServicio.eliminarProducto(id);
         if (!eliminado) {
             return ResponseEntity.notFound().build();

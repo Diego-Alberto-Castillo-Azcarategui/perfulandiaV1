@@ -17,38 +17,38 @@ public class ProductoRepositorio {
         productos.addAll(
                 List.of(
                         Producto.builder()
-                                .id("P001")
+                                .id(Long.valueOf("P001"))
                                 .nombre("Perfume vainilla")
                                 .descripcion("Perfume con un delicioso olor a vainilla")
-                                .precio("30.000")
+                                .precio(Double.valueOf("30.000"))
                                 .categoria("Perfumes")
                                 .build(),
                         Producto.builder()
-                                .id("P002")
+                                .id(Long.valueOf("P002"))
                                 .nombre("Perfume Ben 10")
                                 .descripcion("Perfume con olor a limon")
-                                .precio("10.000")
+                                .precio(Double.valueOf("10.000"))
                                 .categoria("Perfumes")
                                 .build(),
                         Producto.builder()
-                                .id("P003")
+                                .id(Long.valueOf("P003"))
                                 .nombre("Essence Mystique")
                                 .descripcion("Perfume floral con notas de jazmín y vainilla")
-                                .precio("59.900")
+                                .precio(Double.valueOf("59.900"))
                                 .categoria("Perfumes")
                                 .build(),
                         Producto.builder()
-                                .id("P004")
+                                .id(Long.valueOf("P004"))
                                 .nombre("Ocean Breeze")
                                 .descripcion("Fragancia fresca con notas cítricas y acuáticas")
-                                .precio("49.750")
+                                .precio(Double.valueOf("49.750"))
                                 .categoria("Perfumes")
                                 .build(),
                         Producto.builder()
-                                .id("P009")
+                                .id(Long.valueOf("P009"))
                                 .nombre("Noir Élégance")
                                 .descripcion("Perfume oriental con notas de ámbar y madera de sándalo, para la noche")
-                                .precio("68.400")
+                                .precio(Double.valueOf("68.400"))
                                 .categoria("Perfumes")
                                 .build()
 
@@ -57,7 +57,7 @@ public class ProductoRepositorio {
     }
     public static List<Producto> findAll() {return productos;}
 
-    public static Producto findById(String id) {
+    public static Producto findById(Long id) {
         for (Producto producto : productos) {
             if (producto.getId().equals(id)) {
                 return producto;

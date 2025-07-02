@@ -11,8 +11,8 @@ import java.util.List;
 public class ProductoServicio {
 
 
-    public static boolean eliminarProducto(String id) {
-        Producto encontrado = ProductoRepositorio.findById(id);
+    public static boolean eliminarProducto(Long id) {
+        Producto encontrado = ProductoRepositorio.findById(Long.valueOf(id));
         if (encontrado == null) {
             return false;
         }
@@ -24,12 +24,12 @@ public class ProductoServicio {
         return ProductoRepositorio.findAll();
     }
 
-    public Producto getProducto(String id) {
+    public Producto getProducto(Long id) {
         return ProductoRepositorio.findById(id);
     }
 
     public boolean agregarProducto(Producto producto) {
-        String id = producto.getId();
+        Long id = producto.getId();
         Producto encontrado = ProductoRepositorio.findById(id);
         if (encontrado != null) {
             return false;
@@ -38,7 +38,7 @@ public class ProductoServicio {
             return true;
     }
 
-    public boolean actualizarProducto(String id, Producto request) {
+    public boolean actualizarProducto(Long id, Producto request) {
         Producto encontrado = ProductoRepositorio.findById(id);
         if (encontrado == null) {
             return false;

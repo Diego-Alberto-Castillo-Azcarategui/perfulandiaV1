@@ -14,12 +14,12 @@ public class UsuarioServicio {
         return UsuarioRepositorio.findAll();
     }
 
-    public Usuario getUsuario(String id) {
+    public Usuario getUsuario(Long id) {
         return UsuarioRepositorio.findByid(id);
     }
 
     public boolean agregarUsuario(Usuario usuario) {
-        String id = usuario.getId();
+        Long id = usuario.getId();
         Usuario encontrado = UsuarioRepositorio.findByid(id);
         if (encontrado != null) {
             return false;
@@ -28,7 +28,7 @@ public class UsuarioServicio {
         return true;
     }
 
-    public boolean reemplazarUsuario(String id, Usuario request) {
+    public boolean reemplazarUsuario(Long id, Usuario request) {
         Usuario encontrado = UsuarioRepositorio.findByid(id);
         if (encontrado == null) {
             return false;
@@ -37,7 +37,7 @@ public class UsuarioServicio {
         return true;
     }
 
-    public boolean eliminarUsuario(String id) {
+    public boolean eliminarUsuario(Long id) {
         Usuario encontrado = UsuarioRepositorio.findByid(id);
         if (encontrado == null) {
             return false;

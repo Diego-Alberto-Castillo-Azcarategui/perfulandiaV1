@@ -23,7 +23,7 @@ public class UsuarioController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Usuario> obtenerUsuarioPorId(@PathVariable String id) {
+    public ResponseEntity<Usuario> obtenerUsuarioPorId(@PathVariable Long id) {
         Usuario encontrado = usuarioServicio.getUsuario(id);
         if (encontrado != null) {
             return ResponseEntity.ok(encontrado);
@@ -45,7 +45,7 @@ public class UsuarioController {
 
     @PutMapping("/{id}")
     public ResponseEntity<MessageResponse> reemplazarUsuario(
-            @PathVariable String id,
+            @PathVariable Long id,
             @RequestBody Usuario request) {
         boolean reemplazado = usuarioServicio.reemplazarUsuario(id, request);
         if (!reemplazado) {
@@ -57,7 +57,7 @@ public class UsuarioController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<MessageResponse> eliminarUsuario(@PathVariable String id) {
+    public ResponseEntity<MessageResponse> eliminarUsuario(@PathVariable Long id) {
         boolean eliminado = usuarioServicio.eliminarUsuario(id);
         if (!eliminado) {
             return ResponseEntity.notFound().build();
