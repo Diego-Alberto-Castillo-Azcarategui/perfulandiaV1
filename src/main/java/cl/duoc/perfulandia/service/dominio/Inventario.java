@@ -1,20 +1,23 @@
 package cl.duoc.perfulandia.service.dominio;
 
-import cl.duoc.perfulandia.repository.InventarioRepositorio;
+import jakarta.persistence.*;
 import lombok.*;
 
+@Entity
 @Getter
 @Setter
-@Builder
 @NoArgsConstructor
 @AllArgsConstructor
-
+@Builder
 public class Inventario {
+
+    @Id
     private String id;
-    private String productoId;
-    private String stock;
-    private String ubicacion;
-    private String estado;
-    private String fechaActualizacion;
+
+    private Integer stock;
+
+    @OneToOne
+    @JoinColumn(name = "producto_id", nullable = false)
+    private Producto producto;
 }
 

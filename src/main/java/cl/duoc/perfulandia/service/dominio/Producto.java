@@ -1,6 +1,5 @@
 package cl.duoc.perfulandia.service.dominio;
 
-import cl.duoc.perfulandia.repository.ProductoRepositorio;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -20,6 +19,5 @@ public class Producto {
     private String descripcion;
     private String nombre;
     private String categoria;
-    private Double precio;      // o BigDecimal
-    // …otros campos
+    private Double precio;
 }

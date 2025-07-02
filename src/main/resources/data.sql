@@ -14,3 +14,7 @@ INSERT INTO productos (nombre, descripcion, precio, categoria) VALUES
     ('Noir Élégance', 'Perfume oriental con notas de ámbar y madera de sándalo, para la noche', '68.400', 'Perfumes');
 
 
+INSERT INTO inventario (id, stock, producto_id) VALUES
+    ('INV001', 50, 1),
+    ('INV002', 30, 2);
+

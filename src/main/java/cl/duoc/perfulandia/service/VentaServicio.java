@@ -12,13 +12,11 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 @Service
-@RequiredArgsConstructor          // ← genera el constructor con el repo
+@RequiredArgsConstructor
 public class VentaServicio {
 
     private final VentaRepositorio ventaRepositorio;
-
-    /* ───────── CRUD básico ─────────────────────────────────────────────── */
-
+    private final InventarioServicio inventarioServicio;
 
     public List<Venta> listarVentas() {
         return ventaRepositorio.findAll();
@@ -28,17 +26,15 @@ public class VentaServicio {
         return ventaRepositorio.findById(id).orElse(null);
     }
 
-    /** @return true si la venta existía y se actualizó */
     public boolean actualizar(Long id, Venta venta) {
         if (!ventaRepositorio.existsById(id)) {
             return false;
         }
-        venta.setId(id);                  // asegúrate de tener setId(...)
+        venta.setId(id);
         ventaRepositorio.save(venta);
         return true;
     }
 
-    /** @return true si la venta existía y se eliminó */
     public boolean eliminar(Long id) {
         if (!ventaRepositorio.existsById(id)) {
             return false;
@@ -50,19 +46,26 @@ public class VentaServicio {
     @SneakyThrows
     @Transactional
     public Venta crear(Venta venta) {
-        // si llega con ID nulo ⇒ nueva venta
+
         if (venta.getId() == null) {
             if (venta.getFecha() == null) {
                 venta.setFecha(LocalDateTime.now());
             }
-            return ventaRepositorio.save(venta);   // INSERT
+
+            Venta ventaGuardada = ventaRepositorio.save(venta); // INSERT
+
+
+            inventarioServicio.actualizarStockPorVenta(ventaGuardada);
+
+            return ventaGuardada;
         }
-        // si llega con ID ⇒ validar que exista (UPDATE) o lanzar 404
+
         Venta existente = ventaRepositorio.findById(venta.getId())
                 .orElseThrow(() -> new ChangeSetPersister.NotFoundException());
-        // copiar campos y guardar
+
         existente.setCantidad(venta.getCantidad());
         existente.setTotal(venta.getTotal());
-        return ventaRepositorio.save(existente);   // UPDATE
+        return ventaRepositorio.save(existente); // UPDATE
     }
 }
+

@@ -1,7 +1,6 @@
 package cl.duoc.perfulandia.service.dominio;
 
 import jakarta.persistence.*;
-import jakarta.persistence.criteria.Fetch;
 import lombok.*;
 
 @Getter

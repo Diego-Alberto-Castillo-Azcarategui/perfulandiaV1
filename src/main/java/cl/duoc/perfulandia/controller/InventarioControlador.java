@@ -12,16 +12,18 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/inventario")
-
 public class InventarioControlador {
+
     @Autowired
     private InventarioServicio inventarioServicio;
 
+    // GET /inventario
     @GetMapping
     public ResponseEntity<List<Inventario>> listar() {
-        return ResponseEntity.ok(InventarioServicio.getInventario());
+        return ResponseEntity.ok(inventarioServicio.getInventario()); // ✅ CORREGIDO: llamado por instancia
     }
 
+    // GET /inventario/{id}
     @GetMapping("/{id}")
     public ResponseEntity<Inventario> buscarPorId(@PathVariable String id) {
         Inventario encontrado = inventarioServicio.getInventario(id);
@@ -31,18 +33,20 @@ public class InventarioControlador {
         return ResponseEntity.notFound().build();
     }
 
+    // POST /inventario
     @PostMapping
-    public ResponseEntity<MessageResponse> crearProducto(
+    public ResponseEntity<MessageResponse> crearInventario(
             @RequestBody Inventario request) {
         boolean agregado = inventarioServicio.agregarInventario(request);
         if (!agregado) {
             return ResponseEntity.status(HttpStatus.CONFLICT)
-                    .body(new MessageResponse("Error al agregar Producto"));
+                    .body(new MessageResponse("Error al agregar producto al inventario"));
         }
         return ResponseEntity.status(HttpStatus.CREATED)
-                .body(new MessageResponse("Producto creado."));
+                .body(new MessageResponse("Inventario creado correctamente."));
     }
 
+    // PUT /inventario/{id}
     @PutMapping("/{id}")
     public ResponseEntity<MessageResponse> actualizarInventario(
             @PathVariable String id,
@@ -53,15 +57,16 @@ public class InventarioControlador {
         }
         return ResponseEntity
                 .status(HttpStatus.OK)
-                .body(new MessageResponse("Producto modificado"));
+                .body(new MessageResponse("Inventario actualizado correctamente."));
     }
 
-     @DeleteMapping("/{id}")
+    // DELETE /inventario/{id}
+    @DeleteMapping("/{id}")
     public ResponseEntity<MessageResponse> eliminarInventario(@PathVariable String id) {
         boolean eliminado = inventarioServicio.eliminarInventario(id);
         if (!eliminado) {
             return ResponseEntity.notFound().build();
         }
-        return ResponseEntity.ok(new MessageResponse("Producto eliminado"));
-     }
+        return ResponseEntity.ok(new MessageResponse("Inventario eliminado correctamente."));
+    }
 }

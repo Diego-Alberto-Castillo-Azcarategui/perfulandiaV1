@@ -1,7 +1,5 @@
 package cl.duoc.perfulandia.service.dominio;
 
-
-import cl.duoc.perfulandia.repository.UsuarioRepositorio;
 import jakarta.persistence.*;
 import lombok.*;
 
