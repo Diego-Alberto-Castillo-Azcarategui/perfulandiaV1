@@ -16,6 +16,4 @@ public interface InventarioServicio {
     boolean eliminarInventario(String id);
 
 
-
-
 }
